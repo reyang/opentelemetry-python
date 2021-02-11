@@ -27,7 +27,7 @@ meter.register_valueobserver(
         "host.name": HOST_NAME,
     }),
     name="system_cpu_usage",
-    description="the system (user + kernel) CPU utilization in percentage, ranging [0, 100.0]",
+    description="the system (user + kernel) CPU utilization in percentage, ranging [0, 100]",
     unit="100%", # What should we put here? How do we distinguish [0, 1.0] versus [0, 100]?
     value_type=int, # To save memory/network/storage, the dev decided to only expose int instead of float
 )
@@ -51,8 +51,10 @@ class OTelHttpRequestHandler(SimpleHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(bytes("Hello, world!", "utf-8"))
         elapsed_time = time.time() - start_time
-        # https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/semantic_conventions/http-metrics.md#labels
         request_latency_recorder.record(elapsed_time * 1000, {
+            "host": HOST_NAME,
+            "processId": PROCESS_ID,
+            # https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/semantic_conventions/http-metrics.md#labels
             # Most of the dimension values are hard-coded just for sake of simplicity
             "http.method": "GET",
             "http.host": "host",
@@ -73,8 +75,10 @@ class OTelHttpRequestHandler(SimpleHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(bytes("Hello, world!", "utf-8"))
         elapsed_time = time.time() - start_time
-        # https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/semantic_conventions/http-metrics.md#labels
         request_latency_recorder.record(elapsed_time * 1000, {
+            "host": HOST_NAME,
+            "processId": PROCESS_ID,
+            # https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/semantic_conventions/http-metrics.md#labels
             # Most of the dimension values are hard-coded just for sake of simplicity
             "http.method": "POST",
             "http.host": "host",
