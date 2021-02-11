@@ -60,14 +60,14 @@ The application owner (developer Y) would only want the following metrics:
 * HTTP request counters, reported every 5 seconds:
   * Total number of received HTTP requests
   * Total number of finished HTTP requests
-  * Number of current ongoing HTTP requests (concurrent HTTP requests)
+  * Number of ongoing HTTP requests (concurrent HTTP requests)
 
-  | Host Name | Process ID | HTTP Host | Received Requests | Finished Requests | Current Requests |
-  | --------- | ---------- | --------- | ----------------- | ----------------- | ---------------- |
-  | MachineA  | 1234       | otel.org  | 630               | 601               | 29               |
-  | MachineA  | 5678       | otel.org  | 1005              | 1001              | 4                |
-* Exception samples (examplar) - in case HTTP 5xx happened, developer Y would want to see a
-  sample request with all the dimensions (IP, Port, etc.)
+  | Host Name | Process ID | HTTP Host | Received Requests | Finished Requests | Concurrent Requests |
+  | --------- | ---------- | --------- | ----------------- | ----------------- | ------------------- |
+  | MachineA  | 1234       | otel.org  | 630               | 601               | 29                  |
+  | MachineA  | 5678       | otel.org  | 1005              | 1001              | 4                   |
+* Exception samples (examplar) - in case HTTP 5xx happened, developer Y would
+  want to see a sample request with all the dimensions (IP, Port, etc.)
 
 ## How to run
 
