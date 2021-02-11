@@ -19,32 +19,37 @@ parts - the library `server_library.py` (owned by X) and the server app
   * How should Y configure the time window(s) and destination(s)
   * How should Y pick the time series and the dimensions
 
-The library will expose the following metrics out of box:
+### Library Requirements
 
-### Process CPU Usage
+The library developer (developer X) will expose the following metrics out of
+box:
+
+#### Process CPU Usage
 
 | Host Name | Process ID | CPU% [0.0, 100.0] |
 | --------- | ---------- | ----------------- |
 | MachineA  | 1234       | 15.3              |
 
-### System CPU Usage
+#### System CPU Usage
 
 | Host Name | CPU% [0, 100] |
 | --------- | ------------- |
 | MachineA  | 30            |
 
-### Server Room Temperature
+#### Server Room Temperature
 
 | Host Name | Temperature (F) |
 | --------- | --------------- |
 | MachineA  | 65.3            |
 
-### HTTP Server Duration
+#### HTTP Server Duration
 
 | Host Name | Process ID | HTTP Method | HTTP Host | HTTP Status Code | HTTP Flavor | Peer IP   | Peer Port | Host IP   | Host Port | Duration (ms) |
 | --------- | ---------- | ----------- | --------- | ---------------- | ----------- | --------- | --------- | --------- | --------- | ------------- |
 | MachineA  | 1234       | GET         | otel.org  | 200              | 1.1         | 127.0.0.1 | 51327     | 127.0.0.1 | 80        | 8.5           |
 | MachineA  | 1234       | POST        | otel.org  | 304              | 1.1         | 127.0.0.1 | 51328     | 127.0.0.1 | 80        | 100.0         |
+
+### Application Requirements
 
 The application owner (developer Y) would only want the following metrics:
 
