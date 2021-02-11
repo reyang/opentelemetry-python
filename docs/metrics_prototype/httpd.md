@@ -50,12 +50,15 @@ The application owner (developer Y) would only want the following metrics:
 
 * [System CPU Usage](#system-cpu-usage) reported every 5 seconds
 * [Server Room Temperature](#server-room-temperature) reported every minute
-* [HTTP Server Duration](#http-server-duration), reported every 5 seconds, with a subset of the dimensions:
+* [HTTP Server Duration](#http-server-duration), reported every 5 seconds, with
+  a subset of the dimensions:
   * Host Name
   * HTTP Method
   * HTTP Host
   * HTTP Status Code
   * 90%, 95%, 99% and 99.9% latency
+* Exception samples - in case HTTP 5xx happened, developer Y would want to see a
+  sample request with all the dimensions (IP, Port, etc.)
 
 ## How to run
 
